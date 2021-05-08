@@ -1,0 +1,176 @@
+﻿
+
+@model IEnumerable<OnlineFloralDelivery.Models.Flower>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">Manage Flowers</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="~/Admin/">Admin</a></li>
+                        <li class="breadcrumb-item active">Flowers</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Data of Flowers</h3>
+                    <p>
+                        <a class="btn btn-success btn-sm float-right" href="~/Admin/Flowers/Create">
+                            <i class="fas fa-plus">
+                            </i>
+                            Create New
+                        </a>
+                        <a style="cursor:pointer; color:white" id="print" class="btn btn-primary btn-sm float-right"><i class="fas fa-print"></i> Print</a>
+                    </p>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table id="tbl_Flowers" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.FlowerName)
+                                </th>
+                                @*<th>
+                                    @Html.DisplayNameFor(model => model.ShortDescription)
+                                </th>*@
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Picture)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.UnitPrice)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Quantity)
+                                </th>
+                                @*<th>
+                                    @Html.DisplayNameFor(model => model.Meaning)
+                                </th>*@
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Supplier.SupplierName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Status)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FlowerName)
+                                </td>
+                                @*<td>
+                                    @Html.DisplayFor(modelItem => item.ShortDescription)
+                                </td>*@
+                                <td>
+                                    <img src="@Url.Content(item.Picture)"  width="150" height="100" />
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.UnitPrice)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Quantity)
+                                </td>
+                                @*<td>
+                                    @Html.Raw(item.Meaning)
+                                </td>*@
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Supplier.SupplierName)
+                                </td>
+                                <td>
+                                    @if (item.Status == true)
+                                    {
+                                        <span class="badge badge-success">Active</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge badge-danger">Disable</span>
+                                    }
+                                </td>
+                                <td class="project-actions text-right">
+                                    <p>
+                                        <a class="btn btn-success btn-sm" href="~/Admin/Flowers/Import/@item.FlowerID">
+                                            <i class="fas fas fa-edit">
+                                            </i>
+                                            Import
+                                        </a>
+                                        <a class="btn btn-success btn-sm" href="~/Admin/Flowers/Export/@item.FlowerID">
+                                            <i class="fas fa-edit">
+                                            </i>
+                                            Export
+                                        </a>
+                                    </p>
+                                    <a class="btn btn-primary btn-sm" href="~/Admin/Flowers/Details/@item.FlowerID">
+                                        <i class="fas fa-folder">
+                                        </i>
+                                        View
+                                    </a>
+                                    <a class="btn btn-info btn-sm" href="~/Admin/Flowers/Edit/@item.FlowerID">
+                                        <i class="fas fa-pencil-alt">
+                                        </i>
+                                        Edit
+                                    </a>
+                                    <a class="btn btn-danger btn-sm" href="~/Admin/Flowers/Delete/@item.FlowerID">
+                                        <i class="fas fa-trash">
+                                        </i>
+                                        Delete
+                                    </a>
+                                </td>
+                            </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section ScriptConfig
+{
+    <link href="~/Assets/Admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/Assets/Admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css" rel="stylesheet" />
+    <script src="~/Assets/Admin/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Assets/Admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Assets/Admin/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/Assets/Admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script>
+        $("#tbl_Flowers").DataTable({
+            "responsive": true,
+            "autoWidth": false,
+            "aoColumns": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            ]
+        });
+
+        $('#print').click(function () {
+            window.print();
+            return false;
+        });
+    </script>
+}
+

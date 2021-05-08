@@ -1,0 +1,191 @@
+﻿@model OnlineFloralDelivery.Models.Order
+
+@{
+    ViewBag.Title = "OrderDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var orderDetailList = (List<OnlineFloralDelivery.Models.OrderDetail>)ViewBag.OrderDetail;
+}
+
+<div class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb__links">
+                    <a href="~/home"><i class="fa fa-home"></i> Home</a>
+                    <a href="~/userprofile/MyOrder"> My Order</a>
+                    <span>Order Detail</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="checkout spad">
+    <div class="container">
+        <div class="col-sm-12">
+            <h2 style="text-align:center; color:gray">ORDER DETAIL</h2>
+            <hr />
+        </div>
+        @using (Html.BeginForm("Checkout", "Cart", FormMethod.Post, htmlAttributes: new { @class = "checkout__form" }))
+        {
+            <div class="row">
+                <div class="col-lg-7">
+                    <h5>Billing detail</h5>
+                    <h3 style="color:red">@TempData["ErrorMess"]</h3>
+                    <div class="row">
+
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="checkout__form__input">
+                                <p>First Name <span>*</span></p>
+                                <input type="text" readonly value="@Model.Customer.FirstName">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="checkout__form__input">
+                                <p>Last Name <span>*</span></p>
+                                <input type="text" readonly value="@Model.Customer.LastName">
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="checkout__form__input">
+                                <p>Username <span>*</span></p>
+                                <input type="text" readonly value="@Model.Customer.Username">
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="checkout__form__input">
+                                <p>Creation Date <span>*</span></p>
+                                <input type="text" value="@Model.CreationDate" readonly>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="checkout__form__input">
+                                <p>Name of the recipient <span>*</span></p>
+                                <input type="text" value="@Model.Recipient" readonly>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="checkout__form__input">
+                                <p>Name of the recipient <span>*</span></p>
+                                <input type="text" value="@Model.Message" readonly>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="checkout__form__input">
+                                <p>Address of the recipient <span>*</span></p>
+                                <input type="text" value="@Model.Address" readonly>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="checkout__form__input">
+                                <p>Shipped Date <span>*</span></p>
+                                @{
+                                    if (Model.ShippingDate == null)
+                                    {
+                                        <input type="text" value="Processing ..." readonly>
+                                    }
+                                    else
+                                    {
+                                        <input type="text" value="@Model.ShippingDate" readonly>
+                                    }
+                                }
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="checkout__form__input">
+                                <p>Phone <span>*</span></p>
+                                <input type="text" readonly value="@Model.Customer.Phone">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="checkout__form__input">
+                                <p>Email <span>*</span></p>
+                                <input type="text" readonly value="@Model.Customer.Email">
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="checkout__form__input">
+                                <p>Note </p>
+                                <input type="text" readonly value="@Model.Note">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-5">
+                    <div class="checkout__order">
+                        <h5>Your order</h5>
+                        <div class="checkout__order__product">
+                            <ul>
+                                <li>
+                                    <span class="top__text">Product</span>
+                                    <span class="top__text__right">Total</span>
+                                </li>
+                                @{
+                                    int total = 0;
+                                    int old_price = 0;
+                                    foreach (var item in orderDetailList)
+                                    {
+                                        <li>
+                                            <small>@item.Quantity x</small> @item.Bouquet.BouquetName <span>
+                                                <script>document.write((@item.Bouquet.UnitPrice * @item.Quantity).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,').slice(0, -3))</script>
+                                            </span>
+                                        </li>
+                                        total += (@item.UnitPrice * @item.Quantity);
+                                        old_price += (@item.Bouquet.OldUnitPrice * @item.Quantity);
+
+                                    }
+                                }
+                            </ul>
+                        </div>
+                        <div class="checkout__order__total">
+                            <ul>
+                                <li>
+                                    Old price <span style="text-decoration:line-through">
+                                        <script>document.write((@old_price).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,').slice(0, -3))</script> VND
+                                    </span>
+                                </li>
+                                <li>
+                                    Total <span>
+                                        <script>document.write((@total).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,').slice(0, -3))</script> VND
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="checkout__order__widget">
+                            @{
+                                <label for="check-payment">
+                                    @Model.Payment.PaymentName
+                                    <input type="checkbox" name="payment" checked>
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label for="check-payment">
+                                    Status: &emsp;
+                                    @if (Model.Status == 0)
+                                    {
+                                        <span style="color:green">Processing</span>
+                                    }
+                                    else if (Model.Status == 1)
+                                    {
+                                        <span style="color:blue">Shipping</span>
+                                    }
+                                    else if (Model.Status == 2)
+                                    {
+                                        <span>COMPLETED</span>
+                                    }
+                                    else
+                                    {
+                                        <span style="color:red">Canceled</span>
+                                    }
+                                </label>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+

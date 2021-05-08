@@ -1,0 +1,311 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    TempData["HomeActive"] = "active";
+}
+
+<section class="categories">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 p-0">
+                @{
+                    foreach (var item in ViewBag.One_Bouquet)
+                    {
+                        <div class="categories__item categories__large__item set-bg"
+                             data-setbg="@Url.Content(@item.MainImage)">
+                            <div class="categories__text">
+                                <h1>@item.BouquetName</h1>
+                                <p>
+                                    @item.ShortDescription
+                                </p>
+                                <a href="~/bouquet-@item.BouquetID">Shop now</a>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+            <div class="col-lg-6">
+                <div class="row">
+                    @{
+                        foreach (var item in ViewBag.Four_Bouquet)
+                        {
+                            <div class="col-lg-6 col-md-6 col-sm-6 p-0">
+                                <div class="categories__item set-bg" data-setbg="@Url.Content(@item.MainImage)">
+                                    <div class="categories__text">
+                                        <h3 style="font-weight:bold">@item.BouquetName</h3>
+                                        <br />
+                                        <a href="~/bouquet-@item.BouquetID">Shop now</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="product spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4">
+                <div class="section-title">
+                    <h4>New bouquets</h4>
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-8">
+                <ul class="filter__controls">
+                    <li class="active" data-filter="*">All</li>
+                    @{
+                        foreach (var item in ViewBag.Five_Category_For_Filter)
+                        {
+                            var a = "OKOK" + item.OccasionID;
+                            <li data-filter=".@a">@item.OccasionName</li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="row property__gallery">
+            @{
+                foreach (var item in ViewBag.Eight_New_Product)
+                {
+                    var a = "OKOK" + item.OccasionID;
+                    <div class="col-lg-3 col-md-4 col-sm-6 mix @a">
+                        <div class="product__item">
+                            <div class="product__item__pic set-bg" data-setbg="@Url.Content(item.MainImage)">
+                                <div class="label new">New</div>
+                                <ul class="product__hover">
+                                    <li><a href="@Url.Content(item.MainImage)" class="image-popup"><span class="arrow_expand"></span></a></li>
+                                    <li><a href="~/add-to-cart?bouquetID=@item.BouquetID&quantity=1"><span class="icon_bag_alt"></span></a></li>
+                                </ul>
+                            </div>
+                            <div class="product__item__text">
+                                <h5><a href="~/bouquet-@item.BouquetID" style="color:black">@item.BouquetName</a></h5>
+                                <div class="rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                                <div class="product__price">
+                                    <script>document.write((@item.UnitPrice).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,').slice(0, -3));</script> VND
+                                </div>
+                                <div style="text-decoration: line-through; font-size:small">
+                                    <script>document.write((@item.OldUnitPrice).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,').slice(0, -3));</script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</section>
+
+
+<section class="banner set-bg" data-setbg="@Url.Content("~/public/img/Backgroud.jpg")">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-7 col-lg-8 m-auto">
+                <div class="banner__slider owl-carousel">
+                    @{
+                        foreach (var item in ViewBag.Sale)
+                        {
+                            <div class="banner__item">
+                                <div class="banner__text">
+                                    <span>@item.SaleName</span>
+                                    <h1>@item.BouquetName</h1>
+                                    <a href="~/bouquet-@item.BouquetID">Shop now</a>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="trend spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="trend__content">
+                    <div class="section-title">
+                        <h4 id="saleForYou">Sale</h4>
+                    </div>
+                    @{
+                        foreach (var item in ViewBag.Sale_Bouquet)
+                        {
+                            <div class="trend__item">
+                                <div class="trend__item__pic">
+                                    <img src="@Url.Content(item.MainImage)" alt="" height="110" width="100">
+                                </div>
+                                <div class="trend__item__text">
+                                    <h6><a href="~/bouquet-@item.BouquetID" style="color:black">@item.BouquetName</a></h6>
+                                    <div class="rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                    <h6><a href="/Occasion?id=@item.OccasionID" style="color:black;">@item.OccasionName</a></h6>
+                                    <div class="product__price">
+                                        <script>document.write((@item.OldUnitPrice).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,').slice(0, -3));</script> VND
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="trend__content">
+                    <div class="section-title">
+                        <h4>
+                            High grade
+                        </h4>
+                    </div>
+                    @{
+                        foreach (var item in ViewBag.Sale_BouquetEx)
+                        {
+                            <div class="trend__item">
+                                <div class="trend__item__pic">
+                                    <img src="@Url.Content(item.MainImage)" alt="" @*style="max-width:100px"*@ height="110" width="100">
+                                </div>
+                                <div class="trend__item__text">
+                                    <h6><a href="~/bouquet-@item.BouquetID" style="color:black">@item.BouquetName</a></h6>
+                                    <div class="rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                    <h6><a href="/Occasion?id=@item.OccasionID" style="color:black;">@item.OccasionName</a></h6>
+                                    <div class="product__price">
+                                        <script>document.write((@item.OldUnitPrice).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,').slice(0, -3));</script> VND
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="trend__content">
+                    <div class="section-title">
+                        <h4>Good price</h4>
+                    </div>
+                    @{
+                        foreach (var item in ViewBag.Sale_BouquetCh)
+                        {
+                            <div class="trend__item">
+                                <div class="trend__item__pic">
+                                    <img src="@Url.Content(item.MainImage)" alt="" height="110" width="100">
+                                </div>
+                                <div class="trend__item__text">
+                                    <h6><a href="~/bouquet-@item.BouquetID" style="color:black">@item.BouquetName</a></h6>
+                                    <div class="rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                    <h6><a href="/Occasion?id=@item.OccasionID" style="color:black;">@item.OccasionName</a></h6>
+                                    <div class="product__price">
+                                        <script>document.write((@item.OldUnitPrice).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,').slice(0, -3));</script> VND
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="discount">
+    <div class="container">
+        <div class="row">
+            @{
+                foreach (var item in ViewBag.Discount)
+                {
+                    <div class="col-lg-6 p-0">
+                        <div class="discount__pic">
+                            <img src="@Url.Content(item.Picture)" alt="" width="585" height="390">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 p-0">
+                        <div class="discount__text">
+                            <div class="discount__text__title">
+                                <span>Promotion</span>
+                                <h2>@item.SaleName</h2>
+                                <h5>
+                                    <span>DISCOUNT</span>
+                                    <script>document.write((@item.Discount).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,').slice(0, -3));</script> VND
+                                </h5>
+                            </div>
+                            <div class="course-countdown">
+                                <ul id="countdown">
+                                </ul>
+
+                            </div>
+                            <script>
+                                var end = new Date('@item.EndDate');
+                                var _second = 1000;
+                                var _minute = _second * 60;
+                                var _hour = _minute * 60;
+                                var _day = _hour * 24;
+                                var timer;
+
+                                function showRemaining() {
+                                    var now = new Date();
+                                    var distance = end - now;
+                                    if (distance < 0) {
+
+                                        clearInterval(timer);
+                                        document.getElementById('countdown').innerHTML = '<li>EXPIRED!</li>';
+
+                                        return;
+                                    }
+                                    var days = Math.floor(distance / _day);
+                                    var hours = Math.floor((distance % _day) / _hour);
+                                    var minutes = Math.floor((distance % _hour) / _minute);
+                                    var seconds = Math.floor((distance % _minute) / _second);
+
+                                    document.getElementById('countdown').innerHTML = '<li> <h3 style="font-weight: bold">' + days + '</h3>Day </li> ';
+                                    document.getElementById('countdown').innerHTML += '<li> <h3 style="font-weight: bold">' + hours + '</h3>Hour </li>';
+                                    document.getElementById('countdown').innerHTML += '<li> <h3 style="font-weight: bold">' + minutes + '</h3>Min </li>';
+                                    document.getElementById('countdown').innerHTML += '<li> <h3 style="font-weight: bold">' + seconds + '</h3>Sec </li>';
+                                }
+
+                                timer = setInterval(showRemaining, 1000);
+                            </script>
+
+                            <style>
+                                .course-countdown {
+                                    position: relative;
+                                }
+
+                                    .course-countdown ul {
+                                        list-style-type: none;
+                                        display: flex;
+                                        justify-content: space-between;
+                                        margin: 20px 35px;
+                                    }
+                            </style>
+                            <a href="~/bouquet-@item.BouquetID">Shop now</a>
+                        </div>
+                    </div>
+                }
+            }
+
+        </div>
+    </div>
+</section>

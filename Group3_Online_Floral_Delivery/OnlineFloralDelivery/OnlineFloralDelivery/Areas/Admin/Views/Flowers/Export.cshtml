@@ -1,0 +1,90 @@
+﻿@model OnlineFloralDelivery.Models.Flower
+
+@{
+    ViewBag.Title = "Export";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Export the amount of flowers</h1>
+                    <h5 style="color:red">@ViewBag.Error</h5>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="~/Admin/">Admin</a></li>
+                        <li class="breadcrumb-item"><a href="~/Admin/Flowers/">Flowers</a></li>
+                        <li class="breadcrumb-item active">Export the amount of flowers</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="card card-info">
+                        <div class="card-header">
+                            <h3 class="card-title">Export Flower</h3>
+                        </div>
+                        @using (Html.BeginForm("Export", "Flowers", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="form-horizontal">
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        @Html.Label("Flower name", htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            <input type="hidden" name="FlowerID" value="@ViewBag.Flower.FlowerID">
+                                            <input type="text" name="FlowerName" value="@ViewBag.Flower.FlowerName" class="form-control" readonly>
+                                            @Html.ValidationMessageFor(model => model.FlowerID, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter quantity", @type = "number", @min = 1 } })
+                                            @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="ShortDescription" value="@ViewBag.Flower.ShortDescription">
+
+                                    <input type="hidden" name="ShortDescription" value="@ViewBag.Flower.ShortDescription">
+                                    <input type="hidden" name="SupplierID" value="@ViewBag.Flower.SupplierID">
+                                    <input type="hidden" name="UnitPrice" value="@ViewBag.Flower.UnitPrice">
+                                    <input type="hidden" name="Meaning" value="@ViewBag.Flower.Meaning">
+                                </div>
+
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-success">Export</button>
+                                    <button type="reset" class="btn btn-default float-right" onclick="window.location = '../'">Cancel</button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section ScriptConfig
+{
+    <script src="~/Assets/Admin/plugins/summernote/summernote-bs4.min.js"></script>
+    <link href="~/Assets/Admin/plugins/summernote/summernote-bs4.min.css" rel="stylesheet" />
+    <script src="~/Assets/Admin/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+    <script>
+        // Summernote
+        $(function () {
+            $('#summernote').summernote()
+            $('#summernote_Specification').summernote()
+        })
+
+    </script>
+}

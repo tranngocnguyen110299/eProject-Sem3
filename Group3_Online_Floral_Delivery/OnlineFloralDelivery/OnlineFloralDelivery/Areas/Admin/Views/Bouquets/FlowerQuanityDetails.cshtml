@@ -1,0 +1,92 @@
+﻿@model OnlineFloralDelivery.Models.BouquetDetail
+
+@{
+    ViewBag.Title = "FlowerQuanityDetails";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var fl = (IEnumerable<OnlineFloralDelivery.Models.BouquetDetail>)ViewBag.FlowerDetails;
+}
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Import the amount of flowers</h1>
+                    <h5 style="color:red">@ViewBag.Error</h5>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="~/Admin/">Admin</a></li>
+                        <li class="breadcrumb-item"><a href="~/Admin/Flowers/">Flowers</a></li>
+                        <li class="breadcrumb-item active">Import the amount of flowers</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="card card-info">
+                        <div class="card-header">
+                            <h3 class="card-title">Edit Flower</h3>
+                        </div>
+                        <p style="color:red">    *@TempData["Error"]</p>
+                        @using (Html.BeginForm("FlowerQuanityDetails", "Bouquets", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="form-horizontal">
+                                <div class="card-body">
+                                    @foreach (var item in fl)
+                                    {
+                                        <div class="form-group row">
+                                            @Html.Label("Flower name", htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                <input type="hidden" name="SelectedIDArray" value="@item.FlowerID">
+                                                <input type="hidden" name="SelectedIDArray" value="@item.BouquetID">
+                                                <input type="text" name="FlowerName" value="@item.Flower.FlowerName" class="form-control" readonly>
+                                                @Html.ValidationMessageFor(model => model.FlowerID, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                <input type="number" name="SelectedIDArray" value="" class="form-control" min="1">
+                                                @*@Html.Editor("SelectedIDArray", new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter quantity", @type = "number", @min = 1 } })*@
+                                                @Html.ValidationMessageFor(model => model.SelectedIDArray, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    }
+                                    </div>
+
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-success" title="Finish">Finish</button>
+                                    <button type="reset" class="btn btn-default float-right" title="Stop entering the number of flowers" onclick="window.location = '../'">Cancel</button>
+                                    @*<a href='@Url.Action("DeleteBouquetDetail", "Bouquets", new { id =  Session["BouquetID"]})' class="btn btn-primary">Pass</a>*@
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section ScriptConfig
+{
+    <script src="~/Assets/Admin/plugins/summernote/summernote-bs4.min.js"></script>
+    <link href="~/Assets/Admin/plugins/summernote/summernote-bs4.min.css" rel="stylesheet" />
+    <script src="~/Assets/Admin/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+    <script>
+        // Summernote
+        $(function () {
+            $('#summernote').summernote()
+            $('#summernote_Specification').summernote()
+        })
+
+    </script>
+}

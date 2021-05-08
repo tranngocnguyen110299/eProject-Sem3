@@ -1,0 +1,188 @@
+﻿@model IEnumerable<OnlineFloralDelivery.Models.Bouquet>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">Manage Bouquets</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="~/Admin/">Admin</a></li>
+                        <li class="breadcrumb-item active">Bouquets</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Data of Bouquets</h3>
+                    <p>
+                        <a class="btn btn-success btn-sm float-right" href="~/Admin/Bouquets/Create">
+                            <i class="fas fa-plus">
+                            </i>
+                            Create New
+                        </a>
+                        <a style="cursor:pointer; color:white" id="print" class="btn btn-primary btn-sm float-right"><i class="fas fa-print"></i> Print</a>
+                    </p>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table id="tbl_Bouquets" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.BouquetName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.MainImage)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Occasion.OccasionName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Sale.SaleName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.UnitPrice)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.OldUnitPrice)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Quantity)
+                                </th>
+                                <th>
+                                    Sell
+                                </th>
+
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.BouquetName)
+                                </td>
+                                <td>
+                                    <img src="@Url.Content(item.MainImage)" width="150" height="100" />
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Occasion.OccasionName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Sale.SaleName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.UnitPrice)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.OldUnitPrice)
+                                </td>
+                                <td>
+                                    @if (item.Quantity == -1)
+                                    {
+                                        <a href='@Url.Action("FlowerQuanityDetails", "Bouquets", new { id =  item.BouquetID})' class="btn btn-warning">Enter the flower number</a>
+                                    }
+                                    else
+                                    {
+                                        @Html.DisplayFor(modelItem => item.Quantity)
+                                    }
+
+                                </td>
+                                <td>
+                                    @if (item.Status == true)
+                                    {
+                                        <span class="badge badge-danger">Stop selling</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge badge-success">Being sold</span>
+                                    }
+                                </td>
+
+
+                                <td class="project-actions text-right">
+                                    <a class="btn btn-success btn-sm btnAMDV" style="background-color: blueviolet" href="~/Admin/Bouquets/BouquetImages/@item.BouquetID">
+                                        <i class="fas fa-image">
+                                        </i>
+                                        Image
+                                    </a>
+                                    <a class="btn btn-primary btn-sm btnAMDV" href="~/Admin/Bouquets/Details/@item.BouquetID">
+                                        <i class="fas fa-folder">
+                                        </i>
+                                        View
+                                    </a>
+                                    <a class="btn btn-info btn-sm btnAMDV" href="~/Admin/Bouquets/Edit/@item.BouquetID">
+                                        <i class="fas fa-pencil-alt">
+                                        </i>
+                                        Edit
+                                    </a>
+                                    <a class="btn btn-danger btn-sm btnAMDV" href="~/Admin/Bouquets/Delete/@item.BouquetID">
+                                        <i class="fas fa-trash">
+                                        </i>
+                                        Delete
+                                    </a>
+                                </td>
+                            </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section ScriptConfig
+{
+    <link href="~/Assets/Admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/Assets/Admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css" rel="stylesheet" />
+    <script src="~/Assets/Admin/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Assets/Admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Assets/Admin/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/Assets/Admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script>
+        $("#tbl_Bouquets").DataTable({
+            "responsive": true,
+            "autoWidth": false,
+            "aoColumns": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+                //{ sWidth: '255px' }
+            ]
+        });
+
+        $('#print').click(function () {
+            window.print();
+            return false;
+        });
+
+    </script>
+
+    <style>
+        .btnAMDV {
+            height: 35px;
+            width: 80px;
+        }
+    </style>
+}

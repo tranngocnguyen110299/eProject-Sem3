@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Success";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb__links">
+                    <a href="~/home"><i class="fa fa-home"></i> Home</a>
+                    <span>@ViewBag.Breadcrumb</span>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="checkout spad">
+    <div class="container">
+        <div class="alert alert-success" style="font-size:large">
+            Congratulations! You have successfully ordered.
+        </div><br />
+        @if (TempData["ErrorMess"] != null)
+        {
+            <div class="alert alert-success" style="font-size:large">@TempData["ErrorMess"]</div>
+        }
+        else
+        {
+            <div class="alert alert-success" style="font-size:large">We will ship your order today.</div>
+        }
+
+
+        <div class="alert alert-dark" style="font-size:large">
+            Note! Working hours are from 9 a.m to 9 p.m.<br />
+            If the order is pre-ordered within five business hours, the bouquet will be delivered on the same day otherwise it will be delivered the next day.
+        </div>
+    </div>
+</section>

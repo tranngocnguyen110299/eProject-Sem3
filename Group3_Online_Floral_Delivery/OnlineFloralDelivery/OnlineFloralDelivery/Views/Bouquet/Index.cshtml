@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb__links">
+                    <a href="~/home"><i class="fa fa-home"></i> Home</a>
+                    <span>Ocasion</span>
+                    <span>@ViewBag.Occc</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="product spad">
+    <div class="container">
+
+        <div class="row property__gallery">
+            @{
+                foreach (var item in ViewBag.Occ)
+                {
+                    var a = "OKOK" + item.OccasionID;
+                    <div class="col-lg-3 col-md-4 col-sm-6 mix @a">
+                        <div class="product__item">
+                            <div class="product__item__pic set-bg" data-setbg="@Url.Content(item.MainImage)">
+                                <div class="label new">New</div>
+                                <ul class="product__hover">
+                                    <li><a href="@Url.Content(item.MainImage)" class="image-popup"><span class="arrow_expand"></span></a></li>
+                                    <li><a href="~/add-to-cart?bouquetID=@item.BouquetID&quantity=1"><span class="icon_bag_alt"></span></a></li>
+                                </ul>
+                            </div>
+                            <div class="product__item__text">
+                                <h5><a href="~/bouquet-@item.BouquetID" style="color:black">@item.BouquetName</a></h5>
+                                <div class="rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                                <div class="product__price">
+                                    <script>document.write((@item.UnitPrice).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,').slice(0, -3));</script> VND
+                                </div>
+                                <div style="text-decoration: line-through; font-size:small">
+                                    <script>document.write((@item.OldUnitPrice).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,').slice(0, -3));</script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+        </div>
+    </section>

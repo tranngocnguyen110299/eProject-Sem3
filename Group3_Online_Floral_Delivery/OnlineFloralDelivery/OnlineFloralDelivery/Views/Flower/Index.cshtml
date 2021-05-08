@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    ViewBag.Breadcrumb = "Meaning of flowers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <div class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__links">
+                        <a href="~/home"><i class="fa fa-home"></i> Home</a>
+                        <span>@ViewBag.Breadcrumb</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="product spad">
+        <div class="container">
+
+            <div class="row property__gallery">
+                @{
+                    foreach (var item in ViewBag.Flo)
+                    {
+                        var a = "OKOK" + item.FlowerID;
+                        <div class="col-lg-3 col-md-4 col-sm-6 mix @a">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg" data-setbg="@Url.Content(item.Picture)">
+                                </div>
+                                <div class="product__item__text">
+                                    <h5><a href="~/Meaning?flowerID=@item.FlowerID" style="color:black">@item.FlowerName</a></h5>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+            </div>
+        </section>

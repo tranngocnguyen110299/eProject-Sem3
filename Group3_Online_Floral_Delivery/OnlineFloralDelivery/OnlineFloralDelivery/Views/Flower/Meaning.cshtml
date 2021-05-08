@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Meaning";
+    ViewBag.Breadcrumb = "Meaning of flower";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <div class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__links">
+                        <a href="~/home"><i class="fa fa-home"></i> Home</a>
+                        <span>@ViewBag.Breadcrumb</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        @{
+            foreach (var item in ViewBag.Flo)
+            {
+                <table class="table">
+                    <thead>
+                        <tr style="text-align: center">
+                            <th>@item.FlowerName</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="text-align: center">
+                            <td>
+                                <img src="@Url.Content(item.Picture)" style="max-height:400px; max-width:400px; " />
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>@Html.Raw(item.Meaning)</td>
+
+                        </tr>
+                    </tbody>
+                </table>
+                }
+            }
+            </div>
+

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f15fca3446844389bcfb2e79a158be92" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="OnlineFloralDeliveryDBModel.BlogCategory" Width="1.5" PointX="7.75" PointY="1.5" />
+        <EntityTypeShape EntityType="OnlineFloralDeliveryDBModel.BlogComment" Width="1.5" PointX="9.75" PointY="4.75" />
+        <EntityTypeShape EntityType="OnlineFloralDeliveryDBModel.Blog" Width="1.5" PointX="10" PointY="1" />
+        <EntityTypeShape EntityType="OnlineFloralDeliveryDBModel.BouquetDetail" Width="1.5" PointX="5.25" PointY="10" />
+        <EntityTypeShape EntityType="OnlineFloralDeliveryDBModel.BouquetImage" Width="1.5" PointX="5.25" PointY="15.875" />
+        <EntityTypeShape EntityType="OnlineFloralDeliveryDBModel.Bouquet" Width="1.5" PointX="3" PointY="5.875" />
+        <EntityTypeShape EntityType="OnlineFloralDeliveryDBModel.Comment" Width="1.5" PointX="5.25" PointY="3.875" />
+        <EntityTypeShape EntityType="OnlineFloralDeliveryDBModel.Customer" Width="1.5" PointX="3" PointY="1.25" />
+        <EntityTypeShape EntityType="OnlineFloralDeliveryDBModel.Employee" Width="1.5" PointX="7.75" PointY="6.625" />
+        <EntityTypeShape EntityType="OnlineFloralDeliveryDBModel.Flower" Width="1.5" PointX="3" PointY="22.5" />
+        <EntityTypeShape EntityType="OnlineFloralDeliveryDBModel.Message" Width="1.5" PointX="3" PointY="12.125" />
+        <EntityTypeShape EntityType="OnlineFloralDeliveryDBModel.Occasion" Width="1.5" PointX="0.75" PointY="7.125" />
+        <EntityTypeShape EntityType="OnlineFloralDeliveryDBModel.Order" Width="1.5" PointX="3" PointY="16.125" />
+        <EntityTypeShape EntityType="OnlineFloralDeliveryDBModel.OrderDetail" Width="1.5" PointX="5.25" PointY="7" />
+        <EntityTypeShape EntityType="OnlineFloralDeliveryDBModel.Payment" Width="1.5" PointX="0.75" PointY="17.125" />
+        <EntityTypeShape EntityType="OnlineFloralDeliveryDBModel.Sale" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="OnlineFloralDeliveryDBModel.Supplier" Width="1.5" PointX="0.75" PointY="22.875" />
+        <AssociationConnector Association="OnlineFloralDeliveryDBModel.FK__Blogs__BlogCateg__619B8048" />
+        <AssociationConnector Association="OnlineFloralDeliveryDBModel.FK__Blogs__Username__60A75C0F" />
+        <AssociationConnector Association="OnlineFloralDeliveryDBModel.FK__BouquetDe__Bouqu__4AB81AF0" />
+        <AssociationConnector Association="OnlineFloralDeliveryDBModel.FK__BouquetDe__Flowe__4BAC3F29" />
+        <AssociationConnector Association="OnlineFloralDeliveryDBModel.FK__BouquetIm__Image__4E88ABD4" />
+        <AssociationConnector Association="OnlineFloralDeliveryDBModel.FK__Bouquets__SaleID__47DBAE45" />
+        <AssociationConnector Association="OnlineFloralDeliveryDBModel.FK__Bouquets__Status__46E78A0C" />
+        <AssociationConnector Association="OnlineFloralDeliveryDBModel.FK__Comments__Bouque__5AEE82B9" />
+        <AssociationConnector Association="OnlineFloralDeliveryDBModel.FK__OrderDeta__Bouqu__5812160E" />
+        <AssociationConnector Association="OnlineFloralDeliveryDBModel.FK__Comments__Userna__5BE2A6F2" />
+        <AssociationConnector Association="OnlineFloralDeliveryDBModel.FK__Order__Username__534D60F1" />
+        <AssociationConnector Association="OnlineFloralDeliveryDBModel.FK__Flowers__Supplie__3D5E1FD2" />
+        <AssociationConnector Association="OnlineFloralDeliveryDBModel.FK__Messages__Occasi__440B1D61" />
+        <AssociationConnector Association="OnlineFloralDeliveryDBModel.FK__Order__PaymentID__5441852A" />
+        <AssociationConnector Association="OnlineFloralDeliveryDBModel.FK__OrderDeta__Order__571DF1D5" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

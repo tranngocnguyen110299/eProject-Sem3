@@ -1,0 +1,97 @@
+﻿@model OnlineFloralDelivery.Models.Bouquet
+@{
+    ViewBag.Title = "CreateExport";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Export the amount of bouquet</h1>
+                    <h5 style="color:red">@ViewBag.Error</h5>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="~/Admin/">Admin</a></li>
+                        <li class="breadcrumb-item"><a href="~/Admin/Bouquets/">Bouquets</a></li>
+                        <li class="breadcrumb-item active">Export the amount of bouquets</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="card card-info">
+                        <div class="card-header">
+                            <h3 class="card-title">Export Bouquets</h3>
+                        </div>
+                        <p style="color: red">@TempData["Error"]</p>
+                        @using (Html.BeginForm("CreateExport", "Bouquets", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="form-horizontal">
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        @Html.Label("Flower name", htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            <input type="hidden" name="BouquetID" value="@ViewBag.Bouquet.BouquetID">
+                                            <input type="text" name="BouquetName" value="@ViewBag.Bouquet.BouquetName" class="form-control" readonly>
+                                            @Html.ValidationMessageFor(model => model.BouquetID, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter quantity", @type = "number", @min = 1, @require="require" } })
+                                            @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="OccasionID" value="@ViewBag.Bouquet.OccasionID">
+
+                                    <input type="hidden" name="SaleID" value="@ViewBag.Bouquet.SaleID">
+                                    <input type="hidden" name="MainImage" value="@ViewBag.Bouquet.MainImage">
+                                    <input type="hidden" name="UnitPrice" value="@ViewBag.Bouquet.UnitPrice">
+                                    <input type="hidden" name="OldUnitPrice" value="@ViewBag.Bouquet.OldUnitPrice">
+                                    <input type="hidden" name="ShortDescription" value="@ViewBag.Bouquet.ShortDescription">
+                                    <input type="hidden" name="Description" value="@ViewBag.Bouquet.Description">
+                                    <input type="hidden" name="Status" value="@ViewBag.Bouquet.Status">
+                                </div>
+
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-success">Export</button>
+                                    <button type="reset" class="btn btn-default float-right" onclick="window.location = '../Import'">Cancel</button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section ScriptConfig
+{
+    <script src="~/Assets/Admin/plugins/summernote/summernote-bs4.min.js"></script>
+    <link href="~/Assets/Admin/plugins/summernote/summernote-bs4.min.css" rel="stylesheet" />
+    <script src="~/Assets/Admin/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+    <script>
+        // Summernote
+        $(function () {
+            $('#summernote').summernote()
+            $('#summernote_Specification').summernote()
+        })
+
+    </script>
+}
+
+
+

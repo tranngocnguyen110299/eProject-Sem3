@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ashion Template">
+    <meta name="keywords" content="Ashion, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ashion | Template</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+    @Styles.Render("~/bundles/core")
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/css/style.css" type="text/css">
+    <link href="~/Content/bootstrap-chosen.css" rel="stylesheet" />
+    <link href="~/Assets/Admin/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css" rel="stylesheet" />
+    <script src="~/Assets/Admin/plugins/sweetalert2/sweetalert2.min.js"></script>
+    @RenderSection("ClientStyle", false)
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Offcanvas Menu Begin -->
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="offcanvas-menu-wrapper">
+        <div class="offcanvas__close">+</div>
+        <ul class="offcanvas__widget">
+            <li><span class="icon_search search-switch"></span></li>
+            <li>
+                <a href="#">
+                    <span class="icon_heart_alt"></span>
+                    <div class="tip">2</div>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon_bag_alt"></span>
+                    <div class="tip">2</div>
+                </a>
+            </li>
+        </ul>
+        <div class="offcanvas__logo">
+            <a href="./index.html"><img src="img/logo.png" alt=""></a>
+        </div>
+        <div id="mobile-menu-wrap"></div>
+        <div class="offcanvas__auth">
+            <a href="~/Login">Login</a>
+            <a href="~/Register">Register</a>
+        </div>
+    </div>
+    <!-- Offcanvas Menu End -->
+    <!-- Header Section Begin -->
+
+    @{Html.RenderAction("Header", "Home");}
+    @RenderBody()
+    <!-- Footer Section Begin -->
+    <section class="services spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="services__item">
+                        <i class="fa fa-car"></i>
+                        <h6>Free Shipping</h6>
+                        <p>For all oder over $99</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="services__item">
+                        <i class="fa fa-money"></i>
+                        <h6>Money Back Guarantee</h6>
+                        <p>If good have Problems</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="services__item">
+                        <i class="fa fa-support"></i>
+                        <h6>Online Support 24/7</h6>
+                        <p>Dedicated support</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="services__item">
+                        <i class="fa fa-headphones"></i>
+                        <h6>Payment Secure</h6>
+                        <p>100% secure payment</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="instagram">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-2 col-md-4 col-sm-4 p-0">
+                    <div class="instagram__item set-bg" data-setbg="@Url.Content("~/public/img/shop6.jpg")">
+                        <div class="instagram__text">
+                            <i class="fa fa-instagram"></i>
+                            <a href="#"> Java Florist</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-4 p-0">
+                    <div class="instagram__item set-bg" data-setbg="@Url.Content("~/public/img/shop1.jpg")">
+                        <div class="instagram__text">
+                            <i class="fa fa-instagram"></i>
+                            <a href="#"> Java Florist</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-4 p-0">
+                    <div class="instagram__item set-bg" data-setbg="@Url.Content("~/public/img/shop2.jpg")">
+                        <div class="instagram__text">
+                            <i class="fa fa-instagram"></i>
+                            <a href="#"> Java Florist</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-4 p-0">
+                    <div class="instagram__item set-bg" data-setbg="@Url.Content("~/public/img/shop3.jpg")">
+                        <div class="instagram__text">
+                            <i class="fa fa-instagram"></i>
+                            <a href="#"> Java Florist</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-4 p-0">
+                    <div class="instagram__item set-bg" data-setbg="@Url.Content("~/public/img/shop4.jpg")">
+                        <div class="instagram__text">
+                            <i class="fa fa-instagram"></i>
+                            <a href="#"> Java Florist</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-4 p-0">
+                    <div class="instagram__item set-bg" data-setbg="@Url.Content("~/public/img/shop5.jpg")">
+                        <div class="instagram__text">
+                            <i class="fa fa-instagram"></i>
+                            <a href="#"> Java Florist</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-7">
+                    <div class="footer__about">
+                        <div class="footer__logo">
+                            <a href="~/Home">
+                                <img src="~/public/img/Logo.png" height="100" width="100" />
+                            </a>
+                        </div>
+                        <p>
+                            Java Florist ensures peace of mind . Shopping - Reputation - Quality.
+                        </p>
+                        <div class="footer__payment">
+                            <a href="#"><img src="#" alt=""></a>
+                            <a href="#"><img src="#" alt=""></a>
+                            <a href="#"><img src="#" alt=""></a>
+                            <a href="#"><img src="#" alt=""></a>
+                            <a href="#"><img src="#" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-5">
+                    <div class="footer__widget">
+                        <h6>Quick links</h6>
+                        <ul>
+                            <li><a href="~/home">Home</a></li>
+                            <li><a href="~/blog">Blogs</a></li>
+                            <li><a href="~/home/contact">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4">
+                    <div class="footer__widget">
+                        <h6>Account</h6>
+                        <ul>
+                            <li><a href="~/userprofile">My Account</a></li>
+                            <li><a href="~/cart">Cart</a></li>
+                            <li><a href="~/cart/checkout">Checkout</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-8 col-sm-8">
+                    <div class="footer__newslatter">
+                        <h6>NEWSLETTER</h6>
+                        <form action="#">
+                            <input type="text" placeholder="Email">
+                            <button type="submit" class="site-btn">Subscribe</button>
+                        </form>
+                        <div class="footer__social">
+                            <a href="https://www.facebook.com/CUSC.CE/"><i class="fa fa-facebook"></i></a>
+                            <a href="https://www.youtube.com/channel/UCeCyUK8qM1k-sIQVGyJ_Bfw"><i class="fa fa-youtube-play"></i></a>
+                            <a href="https://aptech.cusc.vn/"><i class="fa fa-twitter"></i></a>
+                            <a href="https://aptech.cusc.vn/"><i class="fa fa-instagram"></i></a>
+                            <a href="https://aptech.cusc.vn/"><i class="fa fa-pinterest"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch">+</div>
+            @using (Html.BeginForm("Search", "Shop", FormMethod.Post, htmlAttributes: new { @class = "search-model-form" }))
+            {
+                <input type="text" name="txtSearch" id="search-input" placeholder="Search here.....">
+            }
+        </div>
+    </div>
+
+    <!-- Search End -->
+    <!-- Js Plugins -->
+    <script src="~/Content/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <script src="~/Content/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/Content/js/jquery-ui.min.js"></script>
+    <script src="~/Content/js/mixitup.min.js"></script>
+    <script src="~/Content/js/jquery.countdown.min.js"></script>
+    <script src="~/Content/js/jquery.slicknav.js"></script>
+    <script src="~/Content/js/owl.carousel.min.js"></script>
+    <script src="~/Content/js/jquery.nicescroll.min.js"></script>
+    <script src="~/Content/js/main.js"></script>
+    <script src="~/Scripts/chosen.jquery.min.js"></script>
+    <script src="~/Scripts/chosen.jquery.js"></script>
+
+    @RenderSection("ClientScript", false)
+    <script>
+        function smallDropdown() {
+            document.getElementById("myDropdown-2").classList.toggle("show");
+        }
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
+
+    @{ if (TempData["PleaseLogout"] != null)
+        {
+            <script>
+                Swal.fire({
+                    title: 'Please log out! Login to a customer account.',
+                    showClass: {
+                        popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__fadeOutUp'
+                    }
+                });
+            </script>
+
+            }
+        }
+    </body>
+
+</html>

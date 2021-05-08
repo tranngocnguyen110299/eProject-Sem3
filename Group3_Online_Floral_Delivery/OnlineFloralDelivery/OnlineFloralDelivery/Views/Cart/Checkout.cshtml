@@ -1,0 +1,197 @@
+﻿@model List<OnlineFloralDelivery.Models.CartItem>
+@{
+    ViewBag.Title = "Check out";
+    ViewBag.Breadcrumb = "Check out";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var paymentList = (List<OnlineFloralDelivery.Models.Payment>)ViewBag.Payments;
+    var MessageList = (List<OnlineFloralDelivery.Models.Message>)ViewBag.Messages;
+    var client = (OnlineFloralDelivery.Models.UserLogin)Session["CLIENT_SESSION"];
+
+}
+<div class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb__links">
+                    <a href="~/home"><i class="fa fa-home"></i> Home</a>
+                    <span>@ViewBag.Breadcrumb</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (Model.Count > 0)
+{
+    <section class="checkout spad">
+        <div class="container">
+            @using (Html.BeginForm("Checkout", "Cart", FormMethod.Post, htmlAttributes: new { @class = "checkout__form" }))
+            {
+                <div class="row">
+                    <div class="col-lg-7">
+                        <h5>Billing detail</h5>
+                        <h3 style="color:red">@TempData["ErrorMess"]</h3>
+                        <div class="row">
+
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="checkout__form__input">
+                                    <p>First Name <span>*</span></p>
+                                    <input type="text" readonly value="@client.FirstName">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="checkout__form__input">
+                                    <p>Last Name <span>*</span></p>
+                                    <input type="text" readonly value="@client.LastName">
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="checkout__form__input">
+                                    <p>Username <span>*</span></p>
+                                    <input type="text" placeholder="Street Address" name="username" readonly value="@client.Username">
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="checkout__form__input">
+                                    <p>Address <span>*</span></p>
+                                    <input type="text" placeholder="Street Address" readonly value="@client.Address">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="checkout__form__input">
+                                    <p>Phone <span>*</span></p>
+                                    <input type="text" readonly value="@client.Phone">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="checkout__form__input">
+                                    <p>Email <span>*</span></p>
+                                    <input type="text" readonly value="@client.Email">
+                                </div>
+                            </div>
+                            <h5>Enter more information for delivery</h5>
+                            <p style="color: darkorange">Please choose 1 of 2 messages. If both have information, the information entered from the customer will be prioritized.</p>
+
+                            <div class="col-lg-12">
+                                <div class="checkout__form__input">
+                                    <p>Recipient's name </p>
+                                    <input type="text" placeholder="Recipient's name" name="recipient" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="checkout__form__input">
+                                    <p>Messages are available <span></span></p>
+                                    <select id="messageID" name="messageID" class="col-lg-12" size="4" required>
+
+                                        @{
+                                            foreach (var item in ViewBag.Messages)
+                                            {
+                                                <option value="@item.MessageContent">@item.MessageContent    </option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="checkout__form__input">
+                                    <p>Self-imported messages </p>
+                                    <input type="text" placeholder="Self-imported messages" name="messageID2">
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="checkout__form__input">
+                                    <p>Receiver's address </p>
+                                    <input type="text" placeholder="Receiver's address" name="address" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="checkout__form__input">
+                                    <p>Phone</p>
+                                    <input type="number" placeholder="Phone number of the recipient" name="phone" required>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="checkout__form__input">
+                                    <p>Note </p>
+                                    <input type="text" placeholder="Your note" name="note">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-5">
+                        <div class="checkout__order">
+                            <h5>Your order</h5>
+                            <div class="checkout__order__product">
+                                <ul>
+                                    <li>
+                                        <span class="top__text">Product</span>
+                                        <span class="top__text__right">Total</span>
+                                    </li>
+                                    @{
+                                        int total = 0;
+                                        int old_price = 0;
+                                        foreach (var item in Model)
+                                        {
+                                            <li>
+                                                <small>@item.Quantity x</small> @item.Bouquet.BouquetName <span>
+                                                    <script>document.write((@item.Bouquet.UnitPrice * @item.Quantity).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,').slice(0, -3))</script>
+                                                </span>
+                                            </li>
+                                            total += (@item.Bouquet.UnitPrice * @item.Quantity);
+                                            old_price += (@item.Bouquet.OldUnitPrice * @item.Quantity);
+
+                                        }
+                                    }
+                                </ul>
+                            </div>
+                            <div class="checkout__order__total">
+                                <ul>
+                                    <li>
+                                        Old price <span style="text-decoration:line-through">
+                                            <script>document.write((@old_price).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,').slice(0, -3))</script> VND
+                                        </span>
+                                    </li>
+                                    <li>
+                                        Total <span>
+                                            <script>document.write((@total).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,').slice(0, -3))</script> VND
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="checkout__order__widget">
+                                @{
+                                    foreach (var item in paymentList)
+                                    {
+                                        <label for="check-payment-@item.PaymentID">
+                                            @item.PaymentName
+                                            <input type="radio" name="payment" id="check-payment-@item.PaymentID"  value="@item.PaymentID">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    }
+                                }
+                            </div>
+                            <button type="submit" class="site-btn">Place order</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+}
+else
+{
+    <section class="checkout spad">
+        <div class="container">
+            <div class="alert alert-danger" style="font-size:large">Your shopping cart does not contain any products!</div>
+        </div>
+    </section>
+}
+
+}
+
+
+

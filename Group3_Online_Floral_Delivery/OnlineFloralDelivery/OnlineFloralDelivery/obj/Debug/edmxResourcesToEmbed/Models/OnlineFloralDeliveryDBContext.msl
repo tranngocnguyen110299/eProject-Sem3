@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="OnlineFloralDeliveryDBModelStoreContainer" CdmEntityContainer="OnlineFloralDeliveryDBEntities">
+    <EntitySetMapping Name="BlogCategories">
+      <EntityTypeMapping TypeName="OnlineFloralDeliveryDBModel.BlogCategory">
+        <MappingFragment StoreEntitySet="BlogCategories">
+          <ScalarProperty Name="BlogCategoriesName" ColumnName="BlogCategoriesName" />
+          <ScalarProperty Name="BlogCategoriesID" ColumnName="BlogCategoriesID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BlogComments">
+      <EntityTypeMapping TypeName="OnlineFloralDeliveryDBModel.BlogComment">
+        <MappingFragment StoreEntitySet="BlogComments">
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="BlogID" ColumnName="BlogID" />
+          <ScalarProperty Name="BlogComentID" ColumnName="BlogComentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Blogs">
+      <EntityTypeMapping TypeName="OnlineFloralDeliveryDBModel.Blog">
+        <MappingFragment StoreEntitySet="Blogs">
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="BlogCategoriesID" ColumnName="BlogCategoriesID" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="BlogName" ColumnName="BlogName" />
+          <ScalarProperty Name="BlogID" ColumnName="BlogID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BouquetDetails">
+      <EntityTypeMapping TypeName="OnlineFloralDeliveryDBModel.BouquetDetail">
+        <MappingFragment StoreEntitySet="BouquetDetails">
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="FlowerID" ColumnName="FlowerID" />
+          <ScalarProperty Name="BouquetID" ColumnName="BouquetID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BouquetImages">
+      <EntityTypeMapping TypeName="OnlineFloralDeliveryDBModel.BouquetImage">
+        <MappingFragment StoreEntitySet="BouquetImages">
+          <ScalarProperty Name="ImageFileName" ColumnName="ImageFileName" />
+          <ScalarProperty Name="BouquetID" ColumnName="BouquetID" />
+          <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bouquets">
+      <EntityTypeMapping TypeName="OnlineFloralDeliveryDBModel.Bouquet">
+        <MappingFragment StoreEntitySet="Bouquets">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+          <ScalarProperty Name="OldUnitPrice" ColumnName="OldUnitPrice" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="MainImage" ColumnName="MainImage" />
+          <ScalarProperty Name="SaleID" ColumnName="SaleID" />
+          <ScalarProperty Name="OccasionID" ColumnName="OccasionID" />
+          <ScalarProperty Name="BouquetName" ColumnName="BouquetName" />
+          <ScalarProperty Name="BouquetID" ColumnName="BouquetID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comments">
+      <EntityTypeMapping TypeName="OnlineFloralDeliveryDBModel.Comment">
+        <MappingFragment StoreEntitySet="Comments">
+          <ScalarProperty Name="CommentDate" ColumnName="CommentDate" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="BouquetID" ColumnName="BouquetID" />
+          <ScalarProperty Name="CommentID" ColumnName="CommentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="OnlineFloralDeliveryDBModel.Customer">
+        <MappingFragment StoreEntitySet="Customers">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="OnlineFloralDeliveryDBModel.Employee">
+        <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Flowers">
+      <EntityTypeMapping TypeName="OnlineFloralDeliveryDBModel.Flower">
+        <MappingFragment StoreEntitySet="Flowers">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Meaning" ColumnName="Meaning" />
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+          <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+          <ScalarProperty Name="FlowerName" ColumnName="FlowerName" />
+          <ScalarProperty Name="FlowerID" ColumnName="FlowerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Messages">
+      <EntityTypeMapping TypeName="OnlineFloralDeliveryDBModel.Message">
+        <MappingFragment StoreEntitySet="Messages">
+          <ScalarProperty Name="MessageContent" ColumnName="MessageContent" />
+          <ScalarProperty Name="OccasionID" ColumnName="OccasionID" />
+          <ScalarProperty Name="MessageID" ColumnName="MessageID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Occasions">
+      <EntityTypeMapping TypeName="OnlineFloralDeliveryDBModel.Occasion">
+        <MappingFragment StoreEntitySet="Occasions">
+          <ScalarProperty Name="OccasionName" ColumnName="OccasionName" />
+          <ScalarProperty Name="OccasionID" ColumnName="OccasionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="OnlineFloralDeliveryDBModel.Order">
+        <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="ShippingDate" ColumnName="ShippingDate" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Recipient" ColumnName="Recipient" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderDetails">
+      <EntityTypeMapping TypeName="OnlineFloralDeliveryDBModel.OrderDetail">
+        <MappingFragment StoreEntitySet="OrderDetails">
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="BouquetID" ColumnName="BouquetID" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Payments">
+      <EntityTypeMapping TypeName="OnlineFloralDeliveryDBModel.Payment">
+        <MappingFragment StoreEntitySet="Payments">
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+          <ScalarProperty Name="PaymentName" ColumnName="PaymentName" />
+          <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sales">
+      <EntityTypeMapping TypeName="OnlineFloralDeliveryDBModel.Sale">
+        <MappingFragment StoreEntitySet="Sales">
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="SaleName" ColumnName="SaleName" />
+          <ScalarProperty Name="SaleID" ColumnName="SaleID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Suppliers">
+      <EntityTypeMapping TypeName="OnlineFloralDeliveryDBModel.Supplier">
+        <MappingFragment StoreEntitySet="Suppliers">
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+          <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+          <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
